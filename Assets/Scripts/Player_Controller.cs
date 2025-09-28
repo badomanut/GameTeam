@@ -20,6 +20,8 @@ public class Player_Controller : MonoBehaviour
     bool isGameOver = false;
     [SerializeField] Animator player_Animator;
 
+    [SerializeField] GameObject GameOverPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class Player_Controller : MonoBehaviour
                 Debug.Log("Game is Started");
                 isGameStarted = true;
                 player_Animator.SetInteger("isRunning", 1);
-                //player_Animator.speed = 1.3f;
+                player_Animator.speed = 1.3f;
             }
         }
 
@@ -102,6 +104,14 @@ public class Player_Controller : MonoBehaviour
 
                 rb.velocity = Vector3.up * jump_Force;
                 StartCoroutine(Jump());
+            }
+        }
+        if (isGameOver)
+        {
+            if (!GameOverPanel.gameObject.activeSelf)
+            {
+                GameOverPanel.SetActive(true);
+                
             }
         }
     }
