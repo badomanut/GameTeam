@@ -16,11 +16,12 @@ public class Player_Controller : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
 
-    bool isGameStarted = false;
-    bool isGameOver = false;
+    bool isGameStarted;
+    bool isGameOver;
     [SerializeField] Animator player_Animator;
 
     [SerializeField] GameObject GameOverPanel;
+    [SerializeField] GameObject Tap_To_Start_Canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class Player_Controller : MonoBehaviour
                 isGameStarted = true;
                 player_Animator.SetInteger("isRunning", 1);
                 player_Animator.speed = 1.3f;
+                Tap_To_Start_Canvas.SetActive(false);
             }
         }
 
